@@ -108,7 +108,8 @@ Final layer outputs what will be compared to the encoded_polarity to determine t
 We will initiate an instance of the network called model. This instance will be used for training and then to save the final trained model for future inference. 
 The return_model function is used in the run() to instantiate the model and set it up for TPU execution.
 
-**Fine Tuning the Model: **
+**Fine Tuning the Model:**
+
 Here we define a training function that trains the model on the training dataset created above, specified number of times (EPOCH), An epoch defines how many times the complete data will be passed through the network. 
 This function is called in the run()
 Following events happen in this function to fine tune the neural network:
@@ -121,66 +122,15 @@ After every epoch the loss and accuracy value is printed in the console. Also, l
 
 
 **Validating the Model Performance: **
+
 During the validation stage we pass the unseen data(Validation Dataset), trained model, and device details to the function to perform the validation run. This step generates a new encoded_sentiment value for the dataset that it has not seen during the training session. 
 This is then compared to the actual encoded_sentiment, to give us the Validation Accuracy and Loss.
 This function is called in the run()
 This unseen data is the 30% of IMDB Dataset which was separated during the Dataset creation stage. During the validation stage the weights of the model are not updated. We use the generate method for generating new text for the summary. 
 The generated validation accuracy and loss are logged to wandb for every 100th step and per epoch.
-Saving model
-Evaluation
-Compute Metrics - wandb
+
 
 
 
 **Comparison with the model using RobertaSequenceClassifier** - took us 6 hours to complete the fine tuning on a small_dataset of 1000 records, our model runs in 2 hours with the complete dataset.
-Add comparison stats
 
-
-Data Visualization:
-
-Model performance
-
-
-Add metrics from wandb - hyperparamaters
-
-
-
-
-
-
-
-
-Output logs:
-
-
-
-
-
-
-
-
-
-Older Approach:
-
-
-
-
-
-
-
-train :
-
-
-Eval:
- 
-
-Any comparisons with other models online - maybe?
-
-Application of this project
-Further research and/or business opportunities
-Additions and improvements
-Most of the movie review is more than 512 long, using a longformer transformer will significantly increase the performance of this model
-
-
- 
- 
